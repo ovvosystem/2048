@@ -9,9 +9,12 @@ window.onload = function() {
 }
 
 document.addEventListener("keyup", event => {
-    moveTiles(event.key);
-    createTile();
-    updateDisplay();
+    key = event.key
+    if (key === "ArrowUp" || key === "ArrowDown" || key === "ArrowLeft" || key === "ArrowRight") {
+        moveTiles(key);
+        createTile();
+        updateDisplay();
+    }
 })
 
 function createTile() {
