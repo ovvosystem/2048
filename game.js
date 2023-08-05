@@ -1,32 +1,34 @@
 // The game grid, tiles with a 0 are empty
-const grid = [[0,0,0,0],
-              [0,0,0,0],
-              [0,0,0,0],
-              [0,0,0,0]]
+let grid = [[0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]]
 
 window.onload = function() {
-    createTile();
-    createTile();
-    updateDisplay();
+    resetGame()
 }
 
 document.addEventListener("keyup", event => {
     moveTiles(event.key);
+    createTile();
     updateDisplay();
 })
 
 function createTile() {
     let row;
     let col;
-    while (true) {
-        // Repeats until a free tile is found, then fills it
-        row = Math.floor((Math.random()*4));
-        col = Math.floor((Math.random()*4));
-        if (!grid[row][col]) {
-            grid[row][col] = 2;
-            break;
+
+    const freeTiles = []
+    for (const row in grid) {
+        for (const col in grid) {
+            if (!grid[row][col]) freeTiles.push([+row, +col])
         }
     }
+
+    if (!freeTiles.length) resetGame();
+
+    const tile = freeTiles[Math.floor((Math.random()*freeTiles.length))];
+    grid[tile[0]][tile[1]] = 2;
 }
 
 function styleTile(tile) {
@@ -128,4 +130,15 @@ function updateDisplay() {
             styleTile(tile);
         }
     }
+}
+
+function resetGame() {
+    grid = [[0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]]
+    
+    createTile();
+    createTile();
+    updateDisplay();
 }
