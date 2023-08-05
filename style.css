@@ -32,13 +32,22 @@ p {
 
 .flex {
     display: flex;
+    gap: 20px;
+}
+
+.grid {
+    display: grid;
     gap: 10px;
 }
 
 .container {
     flex-direction: column;
-    max-width: 800px;
+    max-width: 600px;
     padding: 1rem;
+}
+
+.scoreboard {
+    grid-template-columns: 1fr 1fr;
 }
 
 .scoreboard div {
@@ -46,7 +55,7 @@ p {
     padding: 20px;
 
     text-align: center;
-    font-size: 3rem;
+    font-size: min(3rem, 10vw);
     font-weight: 700;
 
     background-color: var(--clr-dark);
@@ -56,18 +65,19 @@ p {
 }
 
 .scoreboard p {
-    font-size: 2rem;
+    font-size: min(2rem, 6vw);
     color: var(--clr-light);
 }
 
 .subcontainer p {
     flex: 2;
+    font-size: min(1.25rem, 4.5vw);
 }
 
 .subcontainer button {
     flex: 1;
     
-    font-size: 2rem;
+    font-size: min(1.75rem, 6vw);
     font-weight: 700;
 
     color: var(--clr-white);
