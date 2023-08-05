@@ -7,34 +7,34 @@ const grid = [[0,0,0,0],
 window.onload = function() {
     createTile();
     createTile();
+    updateDisplay();
 }
 
 document.addEventListener("keyup", event => {
     moveTiles(event.key);
+    updateDisplay();
 })
 
 function createTile() {
     let row;
     let col;
     while (true) {
-        // Repeats until an empty tile is found
+        // Repeats until a free tile is found, then fills it
         row = Math.floor((Math.random()*4));
         col = Math.floor((Math.random()*4));
         if (!grid[row][col]) {
+            grid[row][col] = 2;
             break;
         }
     }
-
-    // Updates grid and displays new tile
-    grid[row][col] = 2;
-    const gridPosition = row * 4 + col + 1;
-    const tile = document.querySelector(`.grid-tile:nth-child(${gridPosition})`);
-    tile.children[0].textContent = "2";
-    styleTile(tile);
 }
 
 function styleTile(tile) {
     switch (tile.textContent) {
+        case "": {
+            tile.style.background = "#C4B8AF";
+            break;
+        }
         case "2": {
             tile.style.background = "#EEE0D8";
             break;
@@ -112,6 +112,20 @@ function moveTiles(direction) {
                 }
             }
             break;
+        }
+    }
+}
+
+function updateDisplay() {
+    for (const row in grid) {
+        for (const col in grid) {
+            const gridPosition = +row * 4 + +col + 1;
+            const tile = document.querySelector(`.grid-tile:nth-child(${gridPosition})`);
+
+            if (grid[row][col] === 0) tile.children[0].textContent = "";
+            else tile.children[0].textContent = grid[row][col];
+
+            styleTile(tile);
         }
     }
 }
