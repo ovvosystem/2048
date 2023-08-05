@@ -40,3 +40,22 @@ p {
     max-width: 800px;
     padding: 1rem;
 }
+
+.scoreboard div {
+    flex: 1;
+    padding: 20px;
+
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+
+    border-radius: 20px;
+}
+
+.scoreboard p {
+    font-size: 2rem;
+    color: var(--clr-light);
+}
