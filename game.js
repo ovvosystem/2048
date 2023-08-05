@@ -23,6 +23,16 @@ function createTile() {
     }
 
     // Display new tile
-    const tile = document.querySelector(`.grid-tile:nth-child(${row * 4 + col + 1}) p`);
-    tile.textContent = "2";
+    const tile = document.querySelector(`.grid-tile:nth-child(${row * 4 + col + 1})`);
+    tile.children[0].textContent = "2";
+    styleTile(tile);
+}
+
+function styleTile(tile) {
+    switch (tile.textContent) {
+        case "2": {
+            tile.style.background = "#EEE0D8";
+            break;
+        }
+    }
 }
