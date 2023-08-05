@@ -59,3 +59,20 @@ p {
     font-size: 2rem;
     color: var(--clr-light);
 }
+
+.subcontainer p {
+    flex: 2;
+}
+
+.subcontainer button {
+    flex: 1;
+    
+    font-size: 2rem;
+    font-weight: 700;
+
+    color: var(--clr-white);
+    background-color: var(--clr-btn);
+
+    border: 0px;
+    border-radius: 10px;
+}
