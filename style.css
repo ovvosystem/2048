@@ -84,6 +84,15 @@ p {
     aspect-ratio: 1;
     background-color: var(--clr-light);
     border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-tile p {
+    font-size: 40px;
+    font-weight: 700;
 }
 
 .subcontainer p {

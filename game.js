@@ -20,6 +20,6 @@ function createTile() {
         }
     }
 
-    const tile = document.querySelector(`.grid-tile:nth-child(${row * 4 + col + 1})`);
+    const tile = document.querySelector(`.grid-tile:nth-child(${row * 4 + col + 1}) p`);
     tile.textContent = "2";
 }
