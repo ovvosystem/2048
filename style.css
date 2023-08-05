@@ -1,0 +1,42 @@
+:root {
+    --clr-white: #eee;
+    --clr-light: #e0d8d0;
+    --clr-dark: #908880;
+    --clr-btn: #776655;
+
+
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.4;
+
+    color: var(--clr-dark);
+    background-color: var(--clr-white);
+}
+
+p {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
+
+.container {
+    flex-direction: column;
+    max-width: 800px;
+    padding: 1rem;
+}
