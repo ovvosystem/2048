@@ -69,6 +69,23 @@ p {
     color: var(--clr-light);
 }
 
+.grid-container {
+    width: 90%;
+    padding: 10px;
+    align-self: center;
+
+    background-color: var(--clr-dark);
+    border-radius: 4px;
+
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-tile {
+    aspect-ratio: 1;
+    background-color: var(--clr-light);
+    border-radius: 4px;
+}
+
 .subcontainer p {
     flex: 2;
     font-size: min(1.25rem, 4.5vw);
