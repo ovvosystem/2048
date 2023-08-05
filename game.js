@@ -9,6 +9,10 @@ window.onload = function() {
     createTile();
 }
 
+document.addEventListener("keyup", event => {
+    moveTiles(event.key);
+})
+
 function createTile() {
     let row;
     let col;
@@ -40,5 +44,5 @@ function styleTile(tile) {
 
 function isTileFree(tile) {
     /* tile is an array structured as [row, col] */
-    return grid[tile[0]][tile[1]] ? true : false;
+    return grid[tile[0]][tile[1]] ? false : true;
 }
