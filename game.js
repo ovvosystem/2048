@@ -74,38 +74,47 @@ function styleTile(tile) {
     switch (tile.textContent) {
         case "": {
             tile.style.background = "#C4B8AF";
+            tile.style.color = "#706457";
             break;
         }
         case "2": {
             tile.style.background = "#EEE0D8";
+            tile.style.color = "#706457";
             break;
         }
         case "4": {
             tile.style.background = "#F0DAC0";
+            tile.style.color = "#706457";
             break;
         }
         case "8": {
             tile.style.background = "#F1E2B2";
+            tile.style.color = "#706457";
             break;
         }
         case "16": {
             tile.style.background = "#F7E192";
+            tile.style.color = "#706457";
             break;
         }
         case "32": {
             tile.style.background = "#FFD272";
+            tile.style.color = "#706457";
             break;
         }
         case "64": {
             tile.style.background = "#F7B264";
+            tile.style.color = "#706457";
             break;
         }
         case "128": {
             tile.style.background = "#F19E55";
+            tile.style.color = "#706457";
             break;
         }
         case "256": {
             tile.style.background = "#EB7F51";
+            tile.style.color = "#706457";
             break;
         }   
         case "512": {
