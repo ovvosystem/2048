@@ -54,6 +54,8 @@ function isTileFree(tile) {
 
 function isSameValue(tile1, tile2) {
     /* tiles are arrays structured as [row, col] */
+    if (tile1.includes(4) || tile2.includes(4)) return false;
+    if (tile1.includes(-1) || tile2.includes(-1)) return false;
     return grid[tile1[0]][tile1[1]] === grid[tile2[0]][tile2[1]];
 }
 
@@ -73,11 +75,21 @@ function moveTiles(direction) {
                 // Check for furthest tile up that is free and moves filled tile there
                 for (i = 0; i < tile[0]; i++) {
                     if (isTileFree([i, tile[1]])) {
-                        grid[i][tile[1]] = grid[tile[0]][tile[1]]
+                        // Merges if possible, else just moves
+                        if (isSameValue(tile, [i-1, tile[1]])) mergeOnTile([i-1, tile[1]]);
+                        else grid[i][tile[1]] = grid[tile[0]][tile[1]];
+
                         grid[tile[0]][tile[1]] = 0;
                         break;
                     }
                 }
+
+                // Still merges if possible when tiles are next to each other
+                if (isSameValue(tile, [tile[0]-1, tile[1]])) {
+                    mergeOnTile([tile[0]-1, tile[1]]);
+                    grid[tile[0]][tile[1]] = 0;
+                }
+                                
             }
             break;
         }
@@ -87,11 +99,21 @@ function moveTiles(direction) {
                 // Check for furthest tile up that is free and moves filled tile there
                 for (i = 3; i > tile[0]; i--) {
                     if (isTileFree([i, tile[1]])) {
-                        grid[i][tile[1]] = grid[tile[0]][tile[1]]
+                        // Merges if possible, else just moves
+                        if (isSameValue(tile, [i+1, tile[1]])) mergeOnTile([i+1, tile[1]]);
+                        else grid[i][tile[1]] = grid[tile[0]][tile[1]];
+
                         grid[tile[0]][tile[1]] = 0;
                         break;
                     }
                 }
+
+                // Still merges if possible when tiles are next to each other
+                if (isSameValue(tile, [tile[0]+1, tile[1]])) {
+                    mergeOnTile([tile[0]+1, tile[1]]);
+                    grid[tile[0]][tile[1]] = 0;
+                }
+                
             }
             break;
         }
@@ -101,11 +123,21 @@ function moveTiles(direction) {
                 // Check for furthest tile right that is free and moves filled tile there
                 for (i = 0; i < tile[1]; i++) {
                     if (isTileFree([tile[0], i])) {
-                        grid[tile[0]][i] = grid[tile[0]][tile[1]]
+                        // Merges if possible, else just moves
+                        if (isSameValue(tile, [tile[0], i-1])) mergeOnTile([tile[0], i-1]);
+                        else grid[tile[0]][i] = grid[tile[0]][tile[1]];
+
                         grid[tile[0]][tile[1]] = 0;
                         break;
                     }
                 }
+                
+                // Still merges if possible when tiles are next to each other
+                if (isSameValue(tile, [tile[0], tile[1]-1])) {
+                    mergeOnTile([tile[0], tile[1]-1]);
+                    grid[tile[0]][tile[1]] = 0;
+                }
+
             }
             break;
         }
@@ -115,15 +147,30 @@ function moveTiles(direction) {
                 // Check for furthest tile right that is free and moves filled tile there
                 for (i = 3; i > tile[1]; i--) {
                     if (isTileFree([tile[0], i])) {
-                        grid[tile[0]][i] = grid[tile[0]][tile[1]]
+                        // Merges if possible, else just moves
+                        if (isSameValue(tile, [tile[0], i+1])) mergeOnTile([tile[0], i+1]);
+                        else grid[tile[0]][i] = grid[tile[0]][tile[1]];
+
                         grid[tile[0]][tile[1]] = 0;
                         break;
                     }
                 }
+
+                // Still merges if possible when tiles are next to each other
+                if (isSameValue(tile, [tile[0], tile[1]+1])) {
+                    mergeOnTile([tile[0], tile[1]+1]);
+                    grid[tile[0]][tile[1]] = 0;
+                }
+
             }
             break;
         }
     }
+}
+
+function mergeOnTile(tile) {
+    /* tile is an array structured as [row, col] */
+    grid[tile[0]][tile[1]] *= 2;
 }
 
 function updateDisplay() {
