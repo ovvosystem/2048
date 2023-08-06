@@ -44,6 +44,54 @@ function styleTile(tile) {
             tile.style.background = "#EEE0D8";
             break;
         }
+        case "4": {
+            tile.style.background = "#F0DAC0";
+            break;
+        }
+        case "8": {
+            tile.style.background = "#F1E2B2";
+            break;
+        }
+        case "16": {
+            tile.style.background = "#F7E192";
+            break;
+        }
+        case "32": {
+            tile.style.background = "#FFD272";
+            break;
+        }
+        case "64": {
+            tile.style.background = "#F7B264";
+            break;
+        }
+        case "128": {
+            tile.style.background = "#F19E55";
+            break;
+        }
+        case "256": {
+            tile.style.background = "#EB7F51";
+            break;
+        }   
+        case "512": {
+            tile.style.background = "#E4584B";
+            tile.style.color = "#eeeeee";
+            break;
+        }
+        case "1024": {
+            tile.style.background = "#D83644";
+            tile.style.color = "#eeeeee";
+            break;
+        }
+        case "2048": {
+            tile.style.background = "#761396";
+            tile.style.color = "#eeeeee";
+            break;
+        }
+        default: {
+            tile.style.background = "#444444";
+            tile.style.color = "#eeeeee";
+            break;
+        }
     }
 }
 

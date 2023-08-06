@@ -93,6 +93,13 @@ p {
 .grid-tile p {
     font-size: 40px;
     font-weight: 700;
+    text-shadow: var(--clr-white) 0 0 40px;
+}
+
+@media screen and (max-width: 520px) {
+    .grid-tile p {
+        font-size: 25px;
+    }
 }
 
 .subcontainer p {
