@@ -42,7 +42,7 @@ p {
 
 .container {
     flex-direction: column;
-    max-width: 600px;
+    max-width: min(600px, 60vh);
     padding: 1rem;
 }
 
