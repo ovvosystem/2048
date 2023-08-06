@@ -21,6 +21,9 @@ document.addEventListener("keyup", event => {
     }
 })
 
+const newGame = document.querySelector(".new-game");
+newGame.addEventListener("click", resetGame);
+
 function createTile() {
     let row;
     let col;
@@ -258,6 +261,7 @@ function resetGame() {
     createTile();
     createTile();
     updateDisplay();
+    updateScore(0);
 }
 
 function updateScore(points) {
