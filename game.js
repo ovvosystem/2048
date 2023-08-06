@@ -8,21 +8,50 @@ let grid = [[0,0,0,0],
 let currentScore = 0;
 let bestScore = 0;
 
+// Variables to handle mobile swipe
+let touchStartX;
+let touchStartY;
+let touchEndX;
+let touchEndY;
+
 window.onload = function() {
     resetGame();
 }
 
 document.addEventListener("keyup", event => {
-    key = event.key
+    key = event.key;
     if (key === "ArrowUp" || key === "ArrowDown" || key === "ArrowLeft" || key === "ArrowRight") {
         moveTiles(key);
         createTile();
         updateDisplay();
     }
-})
+});
+
+document.addEventListener("touchstart", event => {
+    touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", event => {
+    touchEndX = event.changedTouches[0].screenX;
+    touchEndY = event.changedTouches[0].screenY;
+    const direction = handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY);
+    if (direction === "up" || direction === "down" || direction === "left" || direction === "right") {
+        moveTiles(direction);
+        createTile();
+        updateDisplay();
+    }
+});
 
 const newGame = document.querySelector(".new-game");
 newGame.addEventListener("click", resetGame);
+
+function handleSwipe(startX, startY, endX, endY) {
+    if (startY - endY > 50) return "up";
+    else if (startY - endY < -50) return "down";
+    else if (startX - endX > 50) return "left";
+    else if (startX - endX < -50) return "right";
+}
 
 function createTile() {
     let row;
@@ -125,7 +154,8 @@ function moveTiles(direction) {
 
     // Moves filled tiles in the desired direction
     switch (direction) {
-        case "ArrowUp": {
+        case "ArrowUp": 
+        case "up": {
             for (const tile of filledTiles) {
                 // Check for furthest tile up that is free and moves filled tile there
                 for (i = 0; i < tile[0]; i++) {
@@ -151,7 +181,8 @@ function moveTiles(direction) {
             break;
         }
 
-        case "ArrowDown": {
+        case "ArrowDown": 
+        case "down": {
             for (const tile of filledTiles.toReversed()) {
                 // Check for furthest tile up that is free and moves filled tile there
                 for (i = 3; i > tile[0]; i--) {
@@ -177,7 +208,8 @@ function moveTiles(direction) {
             break;
         }
 
-        case "ArrowLeft": {
+        case "ArrowLeft": 
+        case "left": {
             for (const tile of filledTiles) {
                 // Check for furthest tile right that is free and moves filled tile there
                 for (i = 0; i < tile[1]; i++) {
@@ -203,7 +235,8 @@ function moveTiles(direction) {
             break;
         }
 
-        case "ArrowRight": {
+        case "ArrowRight": 
+        case "right": {
             for (const tile of filledTiles.toReversed()) {
                 // Check for furthest tile right that is free and moves filled tile there
                 for (i = 3; i > tile[1]; i--) {
