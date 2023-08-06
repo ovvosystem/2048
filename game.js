@@ -2,14 +2,14 @@
 let grid = [[0,0,0,0],
             [0,0,0,0],
             [0,0,0,0],
-            [0,0,0,0]]
+            [0,0,0,0]];
 
 // Game score variables
 let currentScore = 0;
 let bestScore = 0;
 
 window.onload = function() {
-    resetGame()
+    resetGame();
 }
 
 document.addEventListener("keyup", event => {
@@ -28,7 +28,7 @@ function createTile() {
     let row;
     let col;
 
-    const freeTiles = []
+    const freeTiles = [];
     for (const row in grid) {
         for (const col in grid) {
             if (!grid[row][col]) freeTiles.push([+row, +col])
@@ -116,10 +116,10 @@ function isSameValue(tile1, tile2) {
 
 function moveTiles(direction) {
     // Checks for all filled tiles
-    const filledTiles = []
+    const filledTiles = [];
     for (const row in grid) {
         for (const col in grid) {
-            if (grid[row][col]) filledTiles.push([+row, +col])
+            if (grid[row][col]) filledTiles.push([+row, +col]);
         }
     }
 
@@ -255,7 +255,7 @@ function resetGame() {
     grid = [[0,0,0,0],
             [0,0,0,0],
             [0,0,0,0],
-            [0,0,0,0]]
+            [0,0,0,0]];
     currentScore = 0;
     
     createTile();
