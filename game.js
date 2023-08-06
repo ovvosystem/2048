@@ -52,6 +52,11 @@ function isTileFree(tile) {
     return grid[tile[0]][tile[1]] ? false : true;
 }
 
+function isSameValue(tile1, tile2) {
+    /* tiles are arrays structured as [row, col] */
+    return grid[tile1[0]][tile1[1]] === grid[tile2[0]][tile2[1]];
+}
+
 function moveTiles(direction) {
     // Checks for all filled tiles
     const filledTiles = []
