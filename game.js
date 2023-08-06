@@ -136,6 +136,8 @@ function moveTiles(direction) {
                     }
                 }
 
+                if (grid[tile[0]][tile[1]] === 0) continue;
+
                 // Still merges if possible when tiles are next to each other
                 if (isSameValue(tile, [tile[0]-1, tile[1]])) {
                     mergeOnTile([tile[0]-1, tile[1]]);
@@ -160,6 +162,8 @@ function moveTiles(direction) {
                     }
                 }
 
+                if (grid[tile[0]][tile[1]] === 0) continue;
+
                 // Still merges if possible when tiles are next to each other
                 if (isSameValue(tile, [tile[0]+1, tile[1]])) {
                     mergeOnTile([tile[0]+1, tile[1]]);
@@ -183,6 +187,8 @@ function moveTiles(direction) {
                         break;
                     }
                 }
+
+                if (grid[tile[0]][tile[1]] === 0) continue;
                 
                 // Still merges if possible when tiles are next to each other
                 if (isSameValue(tile, [tile[0], tile[1]-1])) {
@@ -207,6 +213,8 @@ function moveTiles(direction) {
                         break;
                     }
                 }
+
+                if (grid[tile[0]][tile[1]] === 0) continue;
 
                 // Still merges if possible when tiles are next to each other
                 if (isSameValue(tile, [tile[0], tile[1]+1])) {
