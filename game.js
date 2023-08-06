@@ -4,6 +4,10 @@ let grid = [[0,0,0,0],
             [0,0,0,0],
             [0,0,0,0]]
 
+// Game score variables
+let currentScore = 0;
+let bestScore = 0;
+
 window.onload = function() {
     resetGame()
 }
@@ -219,6 +223,7 @@ function moveTiles(direction) {
 function mergeOnTile(tile) {
     /* tile is an array structured as [row, col] */
     grid[tile[0]][tile[1]] *= 2;
+    updateScore(grid[tile[0][tile[1]]]);
 }
 
 function updateDisplay() {
@@ -240,8 +245,20 @@ function resetGame() {
             [0,0,0,0],
             [0,0,0,0],
             [0,0,0,0]]
+    currentScore = 0;
     
     createTile();
     createTile();
     updateDisplay();
+}
+
+function updateScore(points) {
+    currentScore += points;
+    if (currentScore > bestScore) bestScore = currentScore;
+
+    const current = document.querySelector(".current-score span");
+    const best = document.querySelector(".best-score span");
+
+    current.textContent = currentScore;
+    best.textContent = bestScore;
 }
