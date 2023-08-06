@@ -231,7 +231,7 @@ function moveTiles(direction) {
 function mergeOnTile(tile) {
     /* tile is an array structured as [row, col] */
     grid[tile[0]][tile[1]] *= 2;
-    updateScore(grid[tile[0][tile[1]]]);
+    updateScore(grid[tile[0]][tile[1]]);
 }
 
 function updateDisplay() {
