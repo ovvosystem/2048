@@ -24,6 +24,9 @@ body {
 
     color: var(--clr-dark);
     background-color: var(--clr-white);
+
+    /* Disable pull-to-refresh on mobile */
+    overscroll-behavior: contain;
 }
 
 p {
